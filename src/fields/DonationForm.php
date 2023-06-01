@@ -6,11 +6,8 @@ use Craft;
 use craft\base\ElementInterface;
 use craft\base\Field;
 use craft\elements\db\ElementQueryInterface;
-use craft\helpers\Html;
 use craft\helpers\StringHelper;
 use yii\db\Schema;
-use craft\helpers\Db;
-use mangochutney\raiselydonationforms\web\assets\cp\CpAssets;
 use mangochutney\raiselydonationforms\RaiselyDonationForms;
 use mangochutney\raiselydonationforms\models\DonationForm as DonationFormClass;
 
@@ -43,31 +40,10 @@ class DonationForm extends Field
         return 'mixed';
     }
 
-    public function attributeLabels(): array
-    {
-        return array_merge(parent::attributeLabels(), [
-            // ...
-        ]);
-    }
-
-    protected function defineRules(): array
-    {
-        return array_merge(parent::defineRules(), [
-            // ...
-        ]);
-    }
-
-    public function getSettingsHtml(): ?string
-    {
-        return null;
-    }
-
     public function getContentColumnType(): array|string
     {
         return Schema::TYPE_STRING;
     }
-
-
 
     public function normalizeValue(mixed $value, ElementInterface $element = null): mixed
     {
@@ -94,9 +70,6 @@ class DonationForm extends Field
 
     protected function inputHtml(mixed $value, ElementInterface $element = null): string
     {
-        $view = Craft::$app->getView();
-        $view->registerAssetBundle(CpAssets::class);
-
         $forms = Craft::$app->getCache()->get('raisely');
 
         return Craft::$app->getView()->renderTemplate('raisely-donation-forms/donation-form-field/_input', [
@@ -104,25 +77,5 @@ class DonationForm extends Field
             'value' => $value ?? '',
             'data' => $forms->data
         ]);
-    }
-
-    public function getElementValidationRules(): array
-    {
-        return [];
-    }
-
-    protected function searchKeywords(mixed $value, ElementInterface $element): string
-    {
-        return StringHelper::toString($value, ' ');
-    }
-
-    public function getElementConditionRuleType(): array|string|null
-    {
-        return null;
-    }
-
-    public function modifyElementsQuery(ElementQueryInterface $query, mixed $value): void
-    {
-        parent::modifyElementsQuery($query, $value);
     }
 }
