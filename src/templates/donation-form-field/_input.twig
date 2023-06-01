@@ -1,0 +1,22 @@
+{% import '_includes/forms' as forms %}
+
+ {% set options = [] %}
+
+
+{% for item in data %}
+  {% set options = options|merge([{
+    value: item.path,
+    label: item.name
+  }]) %}
+{% endfor %}
+
+{{ forms.select({
+  id: field.id ~ '-data',
+  name: field.handle ~ '[data]',
+  options: options,
+  value: value.slug
+}) }}
+
+<a type="button" href="/action" class="btn">
+  Select form
+</a>

@@ -1,0 +1,16 @@
+{# @var plugin \mangochutney\raiselydonationforms\RaiselyDonationForms #}
+{# @var settings \mangochutney\raiselydonationforms\models\Settings #}
+
+{% import '_includes/forms.twig' as forms %}
+
+<div>
+  {{ forms.autosuggestField({
+      label: 'Username',
+      name: 'raiselyApiToken',
+      warning: (config.raiselyApiToken is defined ? macros.configWarning('raiselyApiToken')),
+      suggestEnvVars: true,
+      suggestions: craft.cp.getEnvSuggestions(),
+      value: settings.raiselyApiToken,
+      errors: settings.getErrors('raiselyApiToken')
+  }) }}
+</div>
