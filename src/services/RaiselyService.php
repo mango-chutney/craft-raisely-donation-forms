@@ -2,10 +2,10 @@
 
 namespace mangochutney\raiselydonationforms\services;
 
-use Craft;
-use yii\base\Component;
 use GuzzleHttp\Client;
 use mangochutney\raiselydonationforms\RaiselyDonationForms;
+use yii\base\Component;
+use craft\helpers\App;
 
 /**
  * Raisely Service service
@@ -20,9 +20,9 @@ class RaiselyService extends Component
 
         $response = $client->request('GET', 'https://api.raisely.com/v3/campaigns', [
             'headers' => [
-                'Authorization' => 'Bearer ' . $token,
-                'accept' => 'application/json'
-            ]
+                'Authorization' => 'Bearer ' . App::parseEnv($token),
+                'accept' => 'application/json',
+            ],
         ]);
 
         return json_decode($response->getBody());

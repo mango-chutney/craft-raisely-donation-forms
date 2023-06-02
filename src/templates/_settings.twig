@@ -7,10 +7,10 @@
   {{ forms.autosuggestField({
       label: 'API key',
       name: 'raiselyApiToken',
-      warning: (config.raiselyApiToken is defined ? macros.configWarning('raiselyApiToken')),
       suggestEnvVars: true,
       suggestions: craft.cp.getEnvSuggestions(),
       value: settings.raiselyApiToken,
-      errors: settings.getErrors('raiselyApiToken')
+      errors: settings.getErrors('raiselyApiToken'),
+      required: true,
   }) }}
 </div>

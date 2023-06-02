@@ -1,5 +1,6 @@
 {
   "name": "mango-chutney/craft-raisely-donation-forms",
+  "description": "A field plugin to fetch and embed Raisely donation forms in your Craft CMS content.",
   "type": "craft-plugin",
   "license": "mit",
   "support": {
@@ -10,7 +11,8 @@
     "craftcms/cms": "^4.4.5"
   },
   "require-dev": {
-    "friendsofphp/php-cs-fixer": "^3.17"
+    "craftcms/ecs": "dev-main",
+    "craftcms/phpstan": "dev-main"
   },
   "autoload": {
     "psr-4": {
@@ -21,7 +23,7 @@
     "handle": "raisely-donation-forms",
     "name": "Raisely Donation Forms",
     "developer": "Mango Chutney",
-    "documentationUrl": "",
+    "documentationUrl": "https://github.com/mango-chutney/craft-raisely-donation-forms/blob/main/README.md",
     "class": "mangochutney\\raiselydonationforms\\RaiselyDonationForms"
   },
   "config": {
@@ -35,6 +37,8 @@
     }
   },
   "scripts": {
-    "lint": "./vendor/bin/php-cs-fixer fix src --rules=@PSR12,array_indentation,method_chaining_indentation,multiline_whitespace_before_semicolons,method_argument_space,whitespace_after_comma_in_array"
+    "phpstan": "phpstan --memory-limit=1G",
+    "check-cs": "ecs check --ansi",
+    "fix-cs": "ecs check --ansi --fix"
   }
 }

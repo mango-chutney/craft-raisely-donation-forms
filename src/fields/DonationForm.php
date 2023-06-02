@@ -5,6 +5,7 @@ namespace mangochutney\raiselydonationforms\fields;
 use Craft;
 use craft\base\ElementInterface;
 use craft\base\Field;
+use craft\helpers\Html;
 use mangochutney\raiselydonationforms\models\DonationForm as DonationFormClass;
 use mangochutney\raiselydonationforms\RaiselyDonationForms;
 use mangochutney\raiselydonationforms\web\assets\cp\CpAssets;
@@ -52,27 +53,23 @@ class DonationForm extends Field
             return $value->slug;
         }
 
-        $form =  new DonationFormClass();
+        $form = new DonationFormClass();
 
         if (is_array($value)) {
-            $form->slug = $value['slug']  ?? $value['data'];
+            $form->slug = $value['slug'] ?? $value['data'];
             return $form;
         }
 
-        if (!is_array($value)) {
-            $data = json_decode($value, true);
+        $data = json_decode($value, true);
 
-            $form->slug = $data['slug'] ?? $value;
-            return $form;
-        }
-
-        return null;
+        $form->slug = $data['slug'] ?? $value;
+        return $form;
     }
 
     protected function inputHtml(mixed $value, ElementInterface $element = null): string
     {
         $name = $this->handle;
-        $id = craft\helpers\Html::id($name);
+        $id = Html::id($name);
         $view = Craft::$app->getView();
         $view->registerAssetBundle(CpAssets::class);
         Craft::$app->getView()->registerJs('new Craft.RaiselyForms("' . Craft::$app->getView()->namespaceInputId($name) . '");');
@@ -80,10 +77,10 @@ class DonationForm extends Field
         $forms = Craft::$app->getCache()->get('raisely');
 
         return Craft::$app->getView()->renderTemplate('raisely-donation-forms/donation-form-field/_input', [
-            'field'  => $this,
+            'field' => $this,
             'value' => $value ?? '',
             'data' => $forms->data ?? '',
-            'id' => $id
+            'id' => $id,
         ]);
     }
 }

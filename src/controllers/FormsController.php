@@ -4,8 +4,8 @@ namespace mangochutney\raiselydonationforms\controllers;
 
 use Craft;
 use craft\web\Controller;
-use yii\web\Response;
 use mangochutney\raiselydonationforms\RaiselyDonationForms;
+use yii\web\Response;
 
 class FormsController extends Controller
 {
@@ -17,7 +17,7 @@ class FormsController extends Controller
 
         return $this->asJson([
             'success' => true,
-            'forms' => $forms
+            'forms' => $forms,
         ]);
     }
 }

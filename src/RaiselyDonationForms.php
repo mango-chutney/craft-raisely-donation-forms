@@ -42,13 +42,13 @@ class RaiselyDonationForms extends Plugin
     {
         parent::init();
 
-        Craft::$app->onInit(function () {
+        Craft::$app->onInit(function() {
             $this->attachEventHandlers();
             $this->registerCacheOptions();
             Event::on(
                 View::class,
                 View::EVENT_REGISTER_CP_TEMPLATE_ROOTS,
-                function (RegisterTemplateRootsEvent $event) {
+                function(RegisterTemplateRootsEvent $event) {
                     $event->roots[$this->id] = __DIR__ . '/templates';
                 }
             );
@@ -70,18 +70,18 @@ class RaiselyDonationForms extends Plugin
 
     private function attachEventHandlers(): void
     {
-        Event::on(Fields::class, Fields::EVENT_REGISTER_FIELD_TYPES, function (RegisterComponentTypesEvent $event) {
+        Event::on(Fields::class, Fields::EVENT_REGISTER_FIELD_TYPES, function(RegisterComponentTypesEvent $event) {
             $event->types[] = DonationForm::class;
         });
     }
 
     private function registerCacheOptions(): void
     {
-        Event::on(ClearCaches::class, ClearCaches::EVENT_REGISTER_CACHE_OPTIONS, function (RegisterCacheOptionsEvent $event): void {
+        Event::on(ClearCaches::class, ClearCaches::EVENT_REGISTER_CACHE_OPTIONS, function(RegisterCacheOptionsEvent $event): void {
             $event->options[] = [
                 'key' => 'raisely',
                 'label' => 'Raisely cache',
-                'action' => Craft::$app->path->getRuntimePath() . '/raisely'
+                'action' => Craft::$app->path->getRuntimePath() . '/raisely',
             ];
         });
     }

@@ -2,7 +2,6 @@
 
 namespace mangochutney\raiselydonationforms\models;
 
-use Craft;
 use craft\base\Model;
 use craft\helpers\Template;
 use Twig\Markup;
