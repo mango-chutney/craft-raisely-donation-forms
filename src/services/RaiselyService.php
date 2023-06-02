@@ -7,7 +7,6 @@ use yii\base\Component;
 use GuzzleHttp\Client;
 use mangochutney\raiselydonationforms\RaiselyDonationForms;
 
-
 /**
  * Raisely Service service
  */

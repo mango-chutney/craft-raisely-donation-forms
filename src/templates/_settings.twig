@@ -5,7 +5,7 @@
 
 <div>
   {{ forms.autosuggestField({
-      label: 'Username',
+      label: 'API key',
       name: 'raiselyApiToken',
       warning: (config.raiselyApiToken is defined ? macros.configWarning('raiselyApiToken')),
       suggestEnvVars: true,

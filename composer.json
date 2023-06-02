@@ -9,6 +9,9 @@
     "php": ">=8.0.2",
     "craftcms/cms": "^4.4.5"
   },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.17"
+  },
   "autoload": {
     "psr-4": {
       "mangochutney\\raiselydonationforms\\": "src/"
@@ -30,5 +33,8 @@
       "yiisoft/yii2-composer": true,
       "craftcms/plugin-installer": true
     }
+  },
+  "scripts": {
+    "lint": "./vendor/bin/php-cs-fixer fix src --rules=@PSR12,array_indentation,method_chaining_indentation,multiline_whitespace_before_semicolons,method_argument_space,whitespace_after_comma_in_array"
   }
 }
