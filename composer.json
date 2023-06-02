@@ -1,35 +1,34 @@
 {
-    "name": "mango-chutney/craft-raisely-donation-forms",
-    "type": "craft-plugin",
-    "license": "mit",
-    "support": {
-        "email": "team@mangochutney.com.au"
-    },
-    "require": {
-        "php": ">=8.0.2",
-        "craftcms/cms": "^4.4.5"
-    },
-    "autoload": {
-        "psr-4": {
-            "mangochutney\\raiselydonationforms\\": "src/"
-        }
-    },
-    "extra": {
-        "handle": "raisely-donation-forms",
-        "name": "Raisely Donation Forms",
-        "developer": "Mango Chutney",
-        "documentationUrl": "",
-        "class": "mangochutney\\raiselydonationforms\\RaiselyDonationForms"
-    },
-    "config": {
-        "sort-packages": true,
-        "platform": {
-            "php": "8.0.2"
-        },
-        "allow-plugins": {
-            "yiisoft/yii2-composer": true,
-            "craftcms/plugin-installer": true
-        }
+  "name": "mango-chutney/craft-raisely-donation-forms",
+  "type": "craft-plugin",
+  "license": "mit",
+  "support": {
+    "email": "team@mangochutney.com.au"
+  },
+  "require": {
+    "php": ">=8.0.2",
+    "craftcms/cms": "^4.4.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "mangochutney\\raiselydonationforms\\": "src/"
     }
+  },
+  "extra": {
+    "handle": "raisely-donation-forms",
+    "name": "Raisely Donation Forms",
+    "developer": "Mango Chutney",
+    "documentationUrl": "",
+    "class": "mangochutney\\raiselydonationforms\\RaiselyDonationForms"
+  },
+  "config": {
+    "sort-packages": true,
+    "platform": {
+      "php": "8.0.2"
+    },
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true
+    }
+  }
 }
-

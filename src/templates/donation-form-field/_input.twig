@@ -1,7 +1,6 @@
 {% import '_includes/forms' as forms %}
 
- {% set options = [] %}
-
+{% set options = [] %}
 
 {% for item in data %}
   {% set options = options|merge([{
@@ -10,9 +9,28 @@
   }]) %}
 {% endfor %}
 
-{{ forms.select({
-  id: field.id ~ '-data',
-  name: field.handle ~ '[data]',
-  options: options,
-  value: value.slug
-}) }}
+<div class="flex flex-nowrap">
+  {{ forms.select({
+    id: id ~ '-data',
+    name: field.handle ~ '[data]',
+    options: options,
+    value: value.slug
+  }) }}
+
+  {{ tag('button', {
+    id: id,
+    type: 'button',
+    name: field.handle ~ '[refresh]',
+    class: [
+      'btn',
+      'refresh-forms'
+    ]|filter,
+    text: 'Refresh forms'
+  }) }}
+
+  <div id="{{ id }}-spinner" class="spinner hidden" name="{{ field.handle }}[spinner]"></div>
+  <div id="{{ id }}-check" class="success hidden" name="{{ field.handle }}[check]" data-icon="check"></div>
+</div>
+<ul id="{{ id }}-errors" class="errors hidden" name="{{ field.handle }}[error]">
+  <li>Error</li>
+</ul>
