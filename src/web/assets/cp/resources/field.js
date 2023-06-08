@@ -7,6 +7,7 @@
       const spinner = document.getElementById(id + '-spinner');
       const check = document.getElementById(id + '-check');
       const error = document.getElementById(id + '-errors');
+      const warning = document.getElementById(id + '-warning');
 
       button.addEventListener('click', async function () {
         if (!button.classList.contains('disabled')) {
@@ -29,7 +30,7 @@
 
           if (response.error) {
             error.classList.remove('hidden');
-            error.childNodes[1].textContent = response.error;
+            error.firstChild.textContent = response.error;
           }
 
           if (!response.error) {
@@ -49,7 +50,11 @@
               data.appendChild(opt);
             });
 
+            data.parentElement.classList.remove('hidden');
             check.classList.remove('hidden');
+            if (warning) {
+              warning.classList.add('hidden');
+            }
           }
 
           button.classList.remove('disabled');

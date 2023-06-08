@@ -80,7 +80,7 @@ class RaiselyDonationForms extends Plugin
         Event::on(ClearCaches::class, ClearCaches::EVENT_REGISTER_CACHE_OPTIONS, function(RegisterCacheOptionsEvent $event): void {
             $event->options[] = [
                 'key' => 'raisely',
-                'label' => 'Raisely cache',
+                'label' => 'Raisely form cache',
                 'action' => Craft::$app->path->getRuntimePath() . '/raisely',
             ];
         });

@@ -56,7 +56,8 @@ class DonationForm extends Field
         $form = new DonationFormClass();
 
         if (is_array($value)) {
-            $form->slug = $value['slug'] ?? $value['data'];
+            $form->slug = $value['slug'] ?? $value['data'] ?? '';
+
             return $form;
         }
 

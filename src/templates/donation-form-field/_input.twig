@@ -9,12 +9,21 @@
   }]) %}
 {% endfor %}
 
+{% set class = options is empty ? 'hidden' : '' %}
+
+{% apply spaceless %}
 <div class="flex flex-nowrap">
+  {% if options is empty %}
+    <blockquote id="{{ id }}-warning" class="note warning">
+      Unable to load forms, API key may be incorrect.
+    </blockquote>
+  {% endif %}
   {{ forms.select({
     id: id ~ '-data',
     name: field.handle ~ '[data]',
     options: options,
-    value: value.slug
+    value: value.slug,
+    class: class
   }) }}
 
   {{ tag('button', {
@@ -34,3 +43,4 @@
 <ul id="{{ id }}-errors" class="errors hidden" name="{{ field.handle }}[error]">
   <li>Error</li>
 </ul>
+{% endapply %}
