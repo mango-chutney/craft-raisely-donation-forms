@@ -2,15 +2,15 @@
 
 namespace mangochutney\raiselydonationforms\services;
 
+use craft\helpers\App;
 use GuzzleHttp\Client;
 use mangochutney\raiselydonationforms\RaiselyDonationForms;
 use yii\base\Component;
-use craft\helpers\App;
 
 /**
  * Raisely Service service
  */
-class RaiselyService extends Component
+class ApiService extends Component
 {
     public function fetchApi(): mixed
     {

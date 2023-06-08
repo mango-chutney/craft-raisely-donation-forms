@@ -24,7 +24,7 @@ class DonationForm extends Field
 
         if ($results === false) {
             try {
-                $forms = RaiselyDonationForms::getInstance()->raiselyService->fetchApi();
+                $forms = RaiselyDonationForms::getInstance()->apiService->fetchApi();
             } catch (\Exception) {
                 $forms = [];
             }

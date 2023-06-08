@@ -20,6 +20,8 @@ php craft plugin/install raisely-donation-forms
 
 ## Usage
 
+### Field
+
 1. Add your Raisely API key in your CMS settings or create a create a `config/raisely-donation-forms.php` file with the following:
 
 ```php
@@ -31,3 +33,11 @@ php craft plugin/install raisely-donation-forms
 _Use the Refresh forms button if the forms listed in the dropdown don't match those in your Raisely account_
 
 3. Embed in your template using `{{ entry.yourField.renderForm() }}`
+
+### Variable
+
+If you prefer, the `craft.raisely.renderForm()` variable can be used directly in your tepmlates with a Raisely form ID to render a form without the need for an API key or field setup.
+
+```twig
+{{ craft.raisely.renderForm('lorem') }}
+```

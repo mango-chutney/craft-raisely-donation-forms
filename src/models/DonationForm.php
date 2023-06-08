@@ -3,7 +3,7 @@
 namespace mangochutney\raiselydonationforms\models;
 
 use craft\base\Model;
-use craft\helpers\Template;
+use mangochutney\raiselydonationforms\RaiselyDonationForms;
 use Twig\Markup;
 
 /**
@@ -15,8 +15,6 @@ class DonationForm extends Model
 
     public function renderForm(): ?Markup
     {
-        Template::js('https://cdn.raisely.com/v3/public/embed.js');
-
-        return Template::raw('<div class="raisely-donate" data-width="100%" data-height="800px" data-campaign-path="' . $this->slug . '" data-profile=""></div/>');
+        return RaiselyDonationForms::getInstance()->formService->getEmbed($this->slug);
     }
 }

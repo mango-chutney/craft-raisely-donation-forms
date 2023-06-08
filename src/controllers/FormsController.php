@@ -12,7 +12,7 @@ class FormsController extends Controller
     public function actionRefreshCache(): Response
     {
         $this->requireAcceptsJson();
-        $forms = RaiselyDonationForms::getInstance()->raiselyService->fetchApi();
+        $forms = RaiselyDonationForms::getInstance()->apiService->fetchApi();
         Craft::$app->getCache()->set('raisely', $forms);
 
         return $this->asJson([
