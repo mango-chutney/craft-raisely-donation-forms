@@ -15,6 +15,10 @@ class DonationForm extends Model
 
     public function renderForm(): ?Markup
     {
-        return RaiselyDonationForms::getInstance()->formService->getEmbed($this->slug);
+        if (is_string($this->slug)) {
+            return RaiselyDonationForms::getInstance()->formService->getEmbed($this->slug);
+        }
+
+        return null;
     }
 }
