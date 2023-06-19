@@ -36,7 +36,7 @@ _Use the Refresh forms button if the forms listed in the dropdown don't match th
 
 ### Variable
 
-If you prefer, the `craft.raisely.renderForm()` variable can be used directly in your tepmlates with a Raisely form ID to render a form without the need for an API key or field setup.
+If you prefer, the `craft.raisely.renderForm()` variable can be used directly in your templates with a Raisely form ID to render a form without the need for an API key or field setup.
 
 ```twig
 {{ craft.raisely.renderForm('lorem') }}
