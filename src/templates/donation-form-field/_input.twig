@@ -1,6 +1,11 @@
 {% import '_includes/forms' as forms %}
 
-{% set options = [] %}
+{% set options = [
+  {
+    value: '',
+    label: 'Select a form'
+  }
+] %}
 
 {% for item in data %}
   {% set options = options|merge([{
@@ -9,11 +14,11 @@
   }]) %}
 {% endfor %}
 
-{% set class = options is empty ? 'hidden' : '' %}
+{% set class = data is empty ? 'hidden' : '' %}
 
 {% apply spaceless %}
 <div class="flex flex-nowrap">
-  {% if options is empty %}
+  {% if data is empty %}
     <blockquote id="{{ id }}-warning" class="note warning">
       Unable to load forms, API key may be incorrect.
     </blockquote>

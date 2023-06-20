@@ -30,9 +30,11 @@ php craft plugin/install raisely-donation-forms
 
 2. Create a Raisely Donation Form field and select a form
 
-_Use the Refresh forms button if the forms listed in the dropdown don't match those in your Raisely account_
+_Use the `Refresh forms` button if the forms listed in the dropdown don't match those in your Raisely account_
 
 3. Embed in your template using `{{ entry.yourField.renderForm() }}`
+
+_Use `{{ entry.yourField.isEmpty() }}` to check if the field is populated_
 
 ### Variable
 

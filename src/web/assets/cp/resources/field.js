@@ -34,11 +34,13 @@
           }
 
           if (!response.error) {
+            const selected = data.options[data.selectedIndex].value;
             Array.from(data).forEach((option) => {
               data.removeChild(option);
             });
 
-            const options = [];
+            const options = [['Select a form', 'null']];
+
             response.forms.data.forEach((element) => {
               options.push([element.name, element.path]);
             });
@@ -48,6 +50,12 @@
               opt.appendChild(document.createTextNode(optionData[0]));
               opt.value = optionData[1];
               data.appendChild(opt);
+            });
+
+            Array.from(data.options).forEach((option) => {
+              if (option.value === selected) {
+                option.selected = true;
+              }
             });
 
             data.parentElement.classList.remove('hidden');

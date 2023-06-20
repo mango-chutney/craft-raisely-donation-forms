@@ -63,12 +63,6 @@ class DonationForm extends Field
 
         $data = json_decode($value, true);
 
-        $forms = Craft::$app->getCache()->get('raisely');
-
-        if (isset($data['slug']) && $data['slug'] === '' && isset($forms->data[0]->path)) {
-            $data['slug'] = $forms->data[0]->path;
-        }
-
         $form->slug = $data['slug'] ?? $value ?? '';
         return $form;
     }
@@ -82,10 +76,6 @@ class DonationForm extends Field
         Craft::$app->getView()->registerJs('new Craft.RaiselyForms("' . Craft::$app->getView()->namespaceInputId($name) . '");');
 
         $forms = Craft::$app->getCache()->get('raisely');
-
-        if ($value->slug === '' && isset($forms->data[0]->path)) {
-            $value->slug = $forms->data[0]->path;
-        }
 
         return Craft::$app->getView()->renderTemplate('raisely-donation-forms/donation-form-field/_input', [
             'field' => $this,

@@ -13,9 +13,14 @@ class DonationForm extends Model
 {
     public $slug;
 
+    public function isEmpty(): bool
+    {
+        return $this->slug === null || $this->slug === '';
+    }
+
     public function renderForm(): ?Markup
     {
-        if (is_string($this->slug)) {
+        if (is_string($this->slug) && $this->slug !== '') {
             return RaiselyDonationForms::getInstance()->formService->getEmbed($this->slug);
         }
 
