@@ -2,7 +2,9 @@
 
 namespace mangochutney\raiselydonationforms\services;
 
+use Craft;
 use craft\helpers\Template;
+use mangochutney\raiselydonationforms\RaiselyDonationForms;
 use Twig\Markup;
 use yii\base\Component;
 
@@ -20,5 +22,24 @@ class FormService extends Component
         }
 
         return null;
+    }
+
+    public function getDonations(string $slug, ?int $limit = null): array
+    {
+        $donations = Craft::$app->getCache()->get('raisely-donations');
+
+        if ($donations === false or !isset($donations[$slug])) {
+            try {
+                $results = RaiselyDonationForms::getInstance()->apiService->fetchDonations($slug);
+                $donations[$slug] = $results->data;
+            } catch (\Exception) {
+                $donations[$slug] = [];
+            }
+            $duration = RaiselyDonationForms::getInstance()->getSettings()->donationCacheDuration;
+
+            Craft::$app->getCache()->set('raisely-donations', $donations, $duration);
+        }
+
+        return array_slice($donations[$slug], 0, $limit);
     }
 }

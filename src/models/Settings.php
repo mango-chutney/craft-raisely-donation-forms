@@ -9,12 +9,16 @@ use craft\base\Model;
  */
 class Settings extends Model
 {
-    public string $raiselyApiToken = '';
+    public string $raiselyApiKey = '';
+    public int $campaignCacheDuration = 86400;
+    public int $donationCacheDuration = 21600;
 
     protected function defineRules(): array
     {
         return [
-            [['raiselyApiToken'], 'string'],
+            [['raiselyApiKey'], 'string'],
+            [['campaignCacheDuration'], 'string'],
+            [['donationCacheDuration'], 'string'],
         ];
     }
 }

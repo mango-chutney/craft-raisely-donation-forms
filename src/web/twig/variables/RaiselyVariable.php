@@ -13,4 +13,9 @@ class RaiselyVariable
     {
         return RaiselyDonationForms::getInstance()->formService->getEmbed($slug);
     }
+
+    public function getDonations(string $slug, int $limit = null)
+    {
+        return RaiselyDonationForms::getInstance()->formService->getDonations($slug, $limit);
+    }
 }

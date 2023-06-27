@@ -20,15 +20,17 @@ class DonationForm extends Field
     {
         parent::init();
 
-        $results = Craft::$app->getCache()->get('raisely');
+        $results = Craft::$app->getCache()->get('raisely-campaigns');
 
         if ($results === false) {
             try {
-                $forms = RaiselyDonationForms::getInstance()->apiService->fetchApi();
+                $campaigns = RaiselyDonationForms::getInstance()->apiService->fetchCampaigns();
             } catch (\Exception) {
-                $forms = [];
+                $campaigns = [];
             }
-            Craft::$app->getCache()->set('raisely', $forms);
+
+            $duration = RaiselyDonationForms::getInstance()->getSettings()->campaignCacheDuration;
+            Craft::$app->getCache()->set('raisely-campaigns', $campaigns, $duration);
         }
     }
 
@@ -75,12 +77,12 @@ class DonationForm extends Field
         $view->registerAssetBundle(CpAssets::class);
         Craft::$app->getView()->registerJs('new Craft.RaiselyForms("' . Craft::$app->getView()->namespaceInputId($name) . '");');
 
-        $forms = Craft::$app->getCache()->get('raisely');
+        $campaigns = Craft::$app->getCache()->get('raisely-campaigns');
 
         return Craft::$app->getView()->renderTemplate('raisely-donation-forms/donation-form-field/_input', [
             'field' => $this,
             'value' => $value,
-            'data' => $forms->data ?? '',
+            'data' => $campaigns->data ?? '',
             'id' => $id,
         ]);
     }

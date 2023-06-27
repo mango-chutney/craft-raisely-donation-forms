@@ -39,7 +39,7 @@
               data.removeChild(option);
             });
 
-            const options = [['Select a form', 'null']];
+            const options = [['Select a campaign', 'null']];
 
             response.forms.data.forEach((element) => {
               options.push([element.name, element.path]);

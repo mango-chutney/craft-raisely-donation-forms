@@ -26,4 +26,13 @@ class DonationForm extends Model
 
         return null;
     }
+
+    public function getDonations(int $limit = null): ?array
+    {
+        if (is_string($this->slug) && $this->slug !== '') {
+            return RaiselyDonationForms::getInstance()->formService->getDonations($this->slug, $limit);
+        }
+
+        return null;
+    }
 }

@@ -3,7 +3,7 @@
 {% set options = [
   {
     value: '',
-    label: 'Select a form'
+    label: 'Select a campaign'
   }
 ] %}
 
@@ -20,7 +20,7 @@
 <div class="flex flex-nowrap">
   {% if data is empty %}
     <blockquote id="{{ id }}-warning" class="note warning">
-      Unable to load forms, API key may be incorrect.
+      Unable to load campaigns, API key may be incorrect.
     </blockquote>
   {% endif %}
   {{ forms.select({
@@ -37,9 +37,9 @@
     name: field.handle ~ '[refresh]',
     class: [
       'btn',
-      'refresh-forms'
+      'refresh-campaigns'
     ]|filter,
-    text: 'Refresh forms'
+    text: 'Refresh Campaigns'
   }) }}
 
   <div id="{{ id }}-spinner" class="spinner hidden" name="{{ field.handle }}[spinner]"></div>

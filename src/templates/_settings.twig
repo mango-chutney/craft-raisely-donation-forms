@@ -5,12 +5,12 @@
 
 <div>
   {{ forms.autosuggestField({
-      label: 'API key',
-      name: 'raiselyApiToken',
+      label: 'Raisely API key',
+      name: 'raiselyApiKey',
       suggestEnvVars: true,
       suggestions: craft.cp.getEnvSuggestions(),
-      value: settings.raiselyApiToken,
-      errors: settings.getErrors('raiselyApiToken'),
+      value: settings.raiselyApiKey,
+      errors: settings.getErrors('raiselyApiKey'),
       required: true,
   }) }}
 </div>
