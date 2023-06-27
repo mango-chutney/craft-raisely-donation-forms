@@ -16,9 +16,7 @@ class Settings extends Model
     protected function defineRules(): array
     {
         return [
-            [['raiselyApiKey'], 'string'],
-            [['campaignCacheDuration'], 'string'],
-            [['donationCacheDuration'], 'string'],
+            [['raiselyApiKey'], 'string']
         ];
     }
 }
