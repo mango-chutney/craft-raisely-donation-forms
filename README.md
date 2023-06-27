@@ -40,7 +40,7 @@ or fetch campaign donations with `{{ entry.yourField.getDonations() }}`, this wi
 
 ```twig
   {% for item in entry.yourField.getDonations() %}
-    {{ item.anonymous == true ? 'Anonymous' : item.firstName }} donated {{ item.amount|currency }}
+    {{ item.anonymous == true ? 'Anonymous' : item.firstName }} donated {{ item.publicAmount|currency }}
   {% endfor %}
 ```
 
@@ -78,7 +78,9 @@ You can clear the cache in the Craft Control Panel by going to **Utilities** →
 ```bash
 php craft clear-caches/raisely-campaigns
 ```
+
 and
+
 ```bash
 php craft clear-caches/raisely-donations
 ```
