@@ -69,6 +69,11 @@ class DonationForm extends Field
         return $form;
     }
 
+    public function isValueEmpty(mixed $value, ElementInterface $element): bool
+    {
+        return $value->slug === '';
+    }
+
     protected function inputHtml(mixed $value, ElementInterface $element = null): string
     {
         $name = $this->handle;
