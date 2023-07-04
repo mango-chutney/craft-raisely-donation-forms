@@ -13,6 +13,11 @@ class DonationForm extends Model
 {
     public $slug;
 
+    public function __toString(): string
+    {
+        return $this->slug ?? '';
+    }
+
     public function isEmpty(): bool
     {
         return $this->slug === null || $this->slug === '';

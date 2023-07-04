@@ -16,7 +16,7 @@ class Settings extends Model
     protected function defineRules(): array
     {
         return [
-            [['raiselyApiKey'], 'string']
+            [['raiselyApiKey'], 'string'],
         ];
     }
 }
