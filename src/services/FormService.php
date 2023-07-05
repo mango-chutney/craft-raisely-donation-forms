@@ -18,7 +18,7 @@ class FormService extends Component
         if ($slug !== '') {
             Template::js('https://cdn.raisely.com/v3/public/embed.js');
 
-            return Template::raw('<div class="raisely-donate" data-width="100%" data-height="800px" data-campaign-path="' . $slug . '" data-profile=""></div/>');
+            return Template::raw('<div class="raisely-donate" data-width="100%" data-height="800" data-campaign-path="' . $slug . '" data-profile=""></div/>');
         }
 
         return null;
