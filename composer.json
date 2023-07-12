@@ -26,6 +26,12 @@
     "documentationUrl": "https://github.com/mango-chutney/craft-raisely-donation-forms/blob/main/README.md",
     "class": "mangochutney\\raiselydonationforms\\RaiselyDonationForms"
   },
+  "authors": [
+    {
+      "name": "Mango Chutney",
+      "homepage": "https://mangochutney.com.au"
+    }
+  ],
   "config": {
     "sort-packages": true,
     "platform": {
