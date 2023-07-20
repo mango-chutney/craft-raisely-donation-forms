@@ -24,22 +24,23 @@ class FormService extends Component
         return null;
     }
 
-    public function getDonations(string $slug, ?int $limit = null): array
+    public function getDonations(string $slug, ?int $limit, ?string $sort = '', ?string $order = ''): array
     {
         $donations = Craft::$app->getCache()->get('raisely-donations');
+        $hash = hash('crc32', $slug . $limit . $sort . $order);
 
-        if ($donations === false or !isset($donations[$slug])) {
+        if ($donations === false or !isset($donations[$hash])) {
             try {
-                $results = RaiselyDonationForms::getInstance()->apiService->fetchDonations($slug);
-                $donations[$slug] = $results->data;
+                $results = RaiselyDonationForms::getInstance()->apiService->fetchDonations($slug, $limit, $sort, $order);
+                $donations[$hash] = $results->data;
             } catch (\Exception) {
-                $donations[$slug] = [];
+                $donations[$hash] = [];
             }
             $duration = RaiselyDonationForms::getInstance()->getSettings()->donationCacheDuration;
 
             Craft::$app->getCache()->set('raisely-donations', $donations, $duration);
         }
 
-        return array_slice($donations[$slug], 0, $limit);
+        return $donations[$hash];
     }
 }

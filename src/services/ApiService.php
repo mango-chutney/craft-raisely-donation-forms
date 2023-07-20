@@ -17,9 +17,11 @@ class ApiService extends Component
         return $this->_getApi('campaigns');
     }
 
-    public function fetchDonations(string $campaign): mixed
+    public function fetchDonations(string $campaign, ?int $limit, ?string $sort, ?string $order): mixed
     {
-        return $this->_getApi('donations?campaign=' . $campaign);
+        $limit = $limit ?? RaiselyDonationForms::getInstance()->getSettings()->donationLimit;
+
+        return $this->_getApi('donations?campaign=' . $campaign . '&limit=' . $limit . '&sort=' . $sort . '&order=' . $order);
     }
 
     private function _getApi(string $endpoint): mixed

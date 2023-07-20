@@ -12,6 +12,7 @@ class Settings extends Model
     public string $raiselyApiKey = '';
     public int $campaignCacheDuration = 86400;
     public int $donationCacheDuration = 21600;
+    public int $donationLimit = 10;
 
     protected function defineRules(): array
     {

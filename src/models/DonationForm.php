@@ -32,10 +32,10 @@ class DonationForm extends Model
         return null;
     }
 
-    public function getDonations(int $limit = null): ?array
+    public function getDonations(int $limit = null, string $sort = '', string $order = ''): ?array
     {
         if (is_string($this->slug) && $this->slug !== '') {
-            return RaiselyDonationForms::getInstance()->formService->getDonations($this->slug, $limit);
+            return RaiselyDonationForms::getInstance()->formService->getDonations($this->slug, $limit, $sort, $order);
         }
 
         return null;
