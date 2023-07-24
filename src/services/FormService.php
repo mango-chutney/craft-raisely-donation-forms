@@ -13,12 +13,12 @@ use yii\base\Component;
  */
 class FormService extends Component
 {
-    public function getEmbed(string $slug): ?Markup
+    public function getEmbed(string $slug, ?int $height): ?Markup
     {
         if ($slug !== '') {
             Template::js('https://cdn.raisely.com/v3/public/embed.js');
 
-            return Template::raw('<div class="raisely-donate" data-width="100%" data-height="800" data-campaign-path="' . $slug . '" data-profile=""></div/>');
+            return Template::raw('<div class="raisely-donate" data-width="100%" data-height="' .  $height . '" data-campaign-path="' . $slug . '" data-profile=""></div/>');
         }
 
         return null;

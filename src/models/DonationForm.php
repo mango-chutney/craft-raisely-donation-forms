@@ -23,10 +23,10 @@ class DonationForm extends Model
         return $this->slug === null || $this->slug === '';
     }
 
-    public function renderForm(): ?Markup
+    public function renderForm(int $height = 800): ?Markup
     {
         if (is_string($this->slug) && $this->slug !== '') {
-            return RaiselyDonationForms::getInstance()->formService->getEmbed($this->slug);
+            return RaiselyDonationForms::getInstance()->formService->getEmbed($this->slug, $height);
         }
 
         return null;

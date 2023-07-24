@@ -34,6 +34,8 @@ _Use the `Refresh Campaigns` button if the campaigns listed in the dropdown don'
 
 3. Embed a form in your template using `{{ entry.yourField.renderForm() }}`
 
+By default Raisely forms are rendered with an initial height of 800px which can lead to unwanted layout shift. To fix this you can pass a height variable `{{ entry.yourField.renderForm(400) }}`.
+
 _Use `{{ entry.yourField.isEmpty() }}` to check if the field is populated_
 
 or fetch campaign donations with `{{ entry.yourField.getDonations() }}`, this will return an array that you can loop through to display donations with something like

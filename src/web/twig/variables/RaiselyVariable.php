@@ -9,9 +9,9 @@ use mangochutney\raiselydonationforms\RaiselyDonationForms;
  */
 class RaiselyVariable
 {
-    public function renderForm(string $slug)
+    public function renderForm(string $slug, int $height = 800)
     {
-        return RaiselyDonationForms::getInstance()->formService->getEmbed($slug);
+        return RaiselyDonationForms::getInstance()->formService->getEmbed($slug, $height);
     }
 
     public function getDonations(string $slug, int $limit = null, string $sort = '', string $order = '')
