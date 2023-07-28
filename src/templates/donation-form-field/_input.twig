@@ -17,7 +17,7 @@
 {% set class = data is empty ? 'hidden' : '' %}
 
 {% apply spaceless %}
-<div class="flex flex-nowrap">
+<div class="flex">
   {% if data is empty %}
     <blockquote id="{{ id }}-warning" class="note warning">
       Unable to load campaigns, API key may be incorrect.
