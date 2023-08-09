@@ -10,7 +10,7 @@ use craft\base\Model;
 class Settings extends Model
 {
     public string $raiselyApiKey = '';
-    public int $campaignCacheDuration = 86400;
+    public int $campaignCacheDuration = 604800;
     public int $donationCacheDuration = 21600;
     public int $donationLimit = 10;
 

@@ -28,6 +28,8 @@ php craft plugin/install raisely-donation-forms
 'raiselyApiKey' => 'RAISELY_API_KEY'
 ```
 
+_Your API key can be found by going to Settings > API & Webhooks in a campaigns side navigation. Any campaign API key can be used for your whole Raisely account_
+
 2. Create a Raisely Donation Form field and select a form
 
 _Use the `Refresh Campaigns` button if the campaigns listed in the dropdown don't match those in your Raisely account_
@@ -46,7 +48,7 @@ or fetch campaign donations with `{{ entry.yourField.getDonations() }}`, this wi
   {% endfor %}
 ```
 
-The amount of donations fetched is limited to 10 by default, but you can change this with a `donationLimit` setting in your `config/raisely-donation-forms.php` file, or by passing a limit variable `entry.yourField.getDonations(5)` - there is currently no pagination so results will only be limited to the first page of results from the API.
+The amount of donations fetched is limited to 10 by default, but you can change this with a `donationLimit` setting in your `config/raisely-donation-forms.php` file, or by passing a limit variable `entry.yourField.getDonations(5)` - there is currently no pagination so results will be limited to the first page of results from the API.
 
 The sort order of donations fetched can be changed using `sort` and `order` variables, for example `entry.yourField.getDonations(10, 'date', 'asc')` would return the 10 oldest donations, or `entry.yourField.getDonations(5, 'amount', 'desc')` would return the 5 top donations.
 
@@ -68,12 +70,12 @@ Both functions work the same as their field counterparts.
 
 ### Caching
 
-Forms and donations are cached for 24 hours and 6 hours respectively to avoid making too many API calls, and for a better user experience - without donation caching, a call would be made every time the template is loaded leading to longer page load times.
+Forms and donations are cached for 1 week and 6 hours respectively to avoid making too many API calls, and for a better user experience - without donation caching, a call would be made every time the template is loaded leading to longer page load times.
 
 If you need to adjust cache times you can use the following settings in your `config/raisely-donation-forms.php` file
 
 ```php
-'campaignCacheDuration' => 86400,
+'campaignCacheDuration' => 604800,
 'donationCacheDuration' => 21600
 ```
 
