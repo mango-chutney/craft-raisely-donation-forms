@@ -52,7 +52,7 @@ The amount of donations fetched is limited to 10 by default, but you can change 
 
 The sort order of donations fetched can be changed using `sort` and `order` variables, for example `entry.yourField.getDonations(10, 'date', 'asc')` would return the 10 oldest donations, or `entry.yourField.getDonations(5, 'amount', 'desc')` would return the 5 top donations.
 
-_A reference of available data can be found in the [Raisely API docs](https://developers.raisely.com/reference/getdonations)_
+_A reference of available data can be found in the [Raisely API docs](https://developers.raisely.com/reference/getdonations). NOTE: Private data is not fetched_
 
 ### Variables
 
