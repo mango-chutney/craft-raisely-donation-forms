@@ -4,7 +4,7 @@ A field plugin to fetch [Raisely](https://raisely.com/) donation data and embed 
 
 ## Installation
 
-This plugin requires Craft CMS 4.4.5 or later, and PHP 8.0.2 or later.
+This plugin requires Craft CMS 4.4.15 or later, and PHP 8.0.2 or later.
 
 1. To install, visit the plugin store from your Craft project, or using
 
